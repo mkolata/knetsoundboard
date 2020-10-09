@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <title>Soundboard</title>
+    <link rel="stylesheet" href="node_modules\w3-css\w3.css">
+	<link rel="stylesheet" href="user-style.css">
+	<link rel="stylesheet" href="w3-theme-blue.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
+  </head>
+  <body>
+  	<!-- Sidebar -->
+	<div class="w3-sidebar w3-bar-block w3-border-right w3-card w3-animate-left" id="mySidebar">
+		<button id="mySidebarButton2" class="w3-bar-item w3-large w3-theme-d3">Close &times;</button>
+		<a href="#" class="w3-bar-item w3-button w3-blue">Main</a>
+		<a href="#" class="w3-bar-item w3-button w3-hover-blue">Hotkeys</a>
+		<a href="#" class="w3-bar-item w3-button w3-hover-blue">Upload</a>
+		<a href="#" class="w3-bar-item w3-button w3-hover-blue">Settings</a>
+	</div>
+  	<div id="main">
+		<!-- <div class="w3-container w3-indigo"> -->
+		<div class="w3-bar w3-theme-d3 w3-xlarge">
+			<h1><button id="mySidebarButton1" class="w3-bar-item w3-button w3-xlarge w3-theme-d3 w3-hover-blue">☰</button>
+			KolataNET Soundboard</h1>
+		</div>	
+		<div class="w3-container mainbox" id="maincontent">
+			<h1>Soundboard Main Window</h1>
+			<div class="w3-third w3-container">
+				<h2>Messages</h2>
+			</div>
+			<div class="w3-third w3-container">
+				<h2>Steuerung</h2>
+			</div>
+			<div id="scrollbar" class="w3-third w3-container scroll">
+				<ul class="w3-ul w3-small">
+				<li class="w3-hover-blue">file1</li>
+				<li class="w3-hover-blue">file2</li>
+			</ul>
+			</div>
+		</div>
+	<div class="user-footer w3-container w3-theme-d3">
+		Node.js <span id="node-version"></span> | Chromium <span id="chrome-version"></span> | Electron <span id="electron-version"></span>
+	</div>
+	</div>
+	
+    <!-- You can also require other files to run in this process -->
+    <script src="./renderer.js"></script>
+	<script src="./user-script.js"></script>
+  </body>
+</html>
