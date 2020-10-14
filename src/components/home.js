@@ -126,7 +126,7 @@ function HomeGrid(props) {
     );
 }
 
-export default class GUIhome extends React.Component {
+export default class GuiHome extends React.Component {
     constructor(props) {
         super(props);
         this.state = {

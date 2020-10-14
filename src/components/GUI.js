@@ -23,7 +23,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import InfoIcon from '@material-ui/icons/Info';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
-import GUIhome from './home';
+import GuiHome from './home';
 import GUIhotkeys from './hotkeys';
 
 import blue from '@material-ui/core/colors/blue';
@@ -120,12 +120,12 @@ function DrawerBar(props) {
   );
 }
 
-export default class GUIMenu extends React.Component {
+export default class GuiMenu extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       page: 'Soundboard',
-      pagecontent: <GUIhome/>,
+      pagecontent: <GuiHome/>,
       drawer: false,
       height: window.innerHeight,
       width: window.innerWidth,
@@ -181,7 +181,7 @@ export default class GUIMenu extends React.Component {
       case 'Hotkeys':
         return <GUIhotkeys/>
       default:
-        return <GUIhome/>
+        return <GuiHome/>
     }
   }
 
