@@ -1,10 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+
 import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 
@@ -26,39 +23,12 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import GuiHome from './home';
 import GUIhotkeys from './hotkeys';
 
-import blue from '@material-ui/core/colors/blue';
-import { createMuiTheme } from '@material-ui/core/styles';
 import { ThemeProvider } from '@material-ui/styles';
 
 import light from './light'
 import dark from './dark'
 
-
-function MenuBar(props) {
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
-    },
-    menuButton: {
-      marginRight: theme.spacing(2),
-    },
-  }));
-  const classes = useStyles();
-
-  return ( 
-    <AppBar position="static">
-      <Toolbar variant="dense">
-        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={props.onClick}> 
-          <MenuIcon />
-        </IconButton>
-        <Typography variant="h6" className={classes.title}>
-          {props.page}
-        </Typography>
-      </Toolbar>
-    </AppBar>
-  );
-}
-
+import MenuBar from './MenuBar'
 
 function DrawerBar(props) {
   const useStyles = makeStyles({
