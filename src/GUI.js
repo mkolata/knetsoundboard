@@ -23,8 +23,8 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import InfoIcon from '@material-ui/icons/Info';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
-import GUIhome from './home';
-import GUIhotkeys from './hotkeys';
+import GUIhome from './components/home';
+import GUIhotkeys from './components/hotkeys';
 
 import blue from '@material-ui/core/colors/blue';
 import { createMuiTheme } from '@material-ui/core/styles';
