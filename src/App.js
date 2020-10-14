@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import GUIMenu from './GUI';
+import GUIMenu from './components/GUI';
 
 
 function App() {
