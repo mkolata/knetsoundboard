@@ -20,7 +20,6 @@ export default class Main extends React.Component {
       drawer: false,
       height: window.innerHeight,
       width: window.innerWidth,
-      count: 0,
     };
     this.updateDimensions = this.updateDimensions.bind(this);
   }
@@ -32,25 +31,6 @@ export default class Main extends React.Component {
   handleMenuClick = name => () => {
     this.setState({page: 'name'})
   };
-
-  renderMenuBar() {
-    return(
-      <MenuBar
-        page={this.state.page}
-        onClick={(role) => this.handleMenuToggleClick(role)}
-        />
-    )
-  }
-
-  renderDrawerBar() {
-    return(
-      <DrawerBar
-        drawer={this.state.drawer}
-        onClick={() => this.handleMenuToggleClick()}
-        handleMenuClick={(name) => {this.setState({page: name})}} //this.menuSelector({page: name})
-        />
-    )
-  }
 
   componentDidMount() {
     window.addEventListener("resize", this.updateDimensions);
@@ -77,20 +57,23 @@ export default class Main extends React.Component {
   }
 
   render() {
-    this.state.count++;
     return(
       <React.Fragment>
         <ThemeProvider theme={ThemeLight}>
         <CssBaseline />
           <div>
-            <div className="MenuBar">{this.renderMenuBar()}</div>
+            <div className="MenuBar">
+              <MenuBar page={this.state.page} onClick={(role) => this.handleMenuToggleClick(role)}/>
+            </div>
             <Container id="blub" maxWidth="100%" disableGutters="true">
               <Typography component="div" style={{ height: window.innerHeight-48}}>
-              {this.menuSelector()}
+                {this.menuSelector()}
               </Typography>
             </Container>
           </div>
-          <div className="DrawerBar">{this.renderDrawerBar()}</div>
+          <div className="DrawerBar"> 
+            <DrawerBar drawer={this.state.drawer} onClick={() => this.handleMenuToggleClick()} handleMenuClick={(name) => {this.setState({page: name})}}/>
+          </div>
           </ThemeProvider>
       </React.Fragment>
     );
