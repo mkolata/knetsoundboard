@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import GUIMenu from './components/GUI';
+import Main from './components/Main';
 
 
 function App() {
   return (
     <div className="App">
-        <GUIMenu/>  
+        <Main/>  
     </div>
   );
 }

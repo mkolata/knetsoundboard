@@ -2,21 +2,21 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
-import GuiHome from './home';
-import GUIhotkeys from './hotkeys';
+import WindowSoundboard from './WindowSoundboard';
+import WindowHotkeys from './WindowHotkeys';
 import { ThemeProvider } from '@material-ui/styles';
 
-import light from './light'
-import dark from './dark'
+import ThemeLight from './ThemeLight'
+import ThemeDark from './ThemeDark'
 import MenuBar from './MenuBar'
 import DrawerBar from './DrawerBar'
 
-export default class GuiMenu extends React.Component {
+export default class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       page: 'Soundboard',
-      pagecontent: <GuiHome/>,
+      pagecontent: <WindowSoundboard/>,
       drawer: false,
       height: window.innerHeight,
       width: window.innerWidth,
@@ -70,9 +70,9 @@ export default class GuiMenu extends React.Component {
   menuSelector() {
     switch(this.state.page) {
       case 'Hotkeys':
-        return <GUIhotkeys/>
+        return <WindowHotkeys/>
       default:
-        return <GuiHome/>
+        return <WindowSoundboard/>
     }
   }
 
@@ -80,7 +80,7 @@ export default class GuiMenu extends React.Component {
     this.state.count++;
     return(
       <React.Fragment>
-        <ThemeProvider theme={light}>
+        <ThemeProvider theme={ThemeLight}>
         <CssBaseline />
           <div>
             <div className="MenuBar">{this.renderMenuBar()}</div>

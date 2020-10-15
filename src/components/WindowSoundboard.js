@@ -126,7 +126,7 @@ function HomeGrid(props) {
     );
 }
 
-export default class GuiHome extends React.Component {
+export default class WindowSoundboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
