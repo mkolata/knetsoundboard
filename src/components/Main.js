@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, { useLayoutEffect, useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import WindowSoundboard from './WindowSoundboard';
 import WindowHotkeys from './WindowHotkeys';
 import { ThemeProvider } from '@material-ui/styles';
+import debounce from 'lodash.debounce';
 
 import ThemeLight from './ThemeLight'
 //import ThemeDark from './ThemeDark'
@@ -20,10 +21,23 @@ function menuSelector(page) {
   }
 }
 
+function useWindowSize() {
+  const [size, setSize] = useState([0, 0]);
+  useLayoutEffect(() => {
+    function updateSize() {
+      setSize([window.innerWidth, window.innerHeight]); 
+    }
+    window.addEventListener('resize', updateSize);
+    updateSize();
+    return () => window.removeEventListener('resize', updateSize);
+  }, []);
+  return size;
+}
+
 export default function Main() {
   const [page, setPage] = useState('Soundboard');
   const [drawer, setDrawer] = useState(false);
-  //const [size, setSize] = useState([0, 0]);
+  const [width, height] = useWindowSize();
 
   return (
     <React.Fragment>
