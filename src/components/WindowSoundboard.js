@@ -4,11 +4,10 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Switch from '@material-ui/core/Switch';
 import TextField from '@material-ui/core/TextField';
 import SoundList from './SoundList'
 import MessageBox from './MessageBox'
+import PlayBox from './PlayBox'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,8 +34,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function WindowSoundboard(props) {
-  const [checked, setChecked] = React.useState(false);
-  const toggleChecked = () => { setChecked((prev) => !prev); };
   const classes = useStyles();
 
   let windowsize = window.innerHeight - 48 - 62 - 48;
@@ -54,7 +51,7 @@ export default function WindowSoundboard(props) {
           </Grid><br></br>
           <Grid item >
             <Paper className={classes.paper}>
-              <FormControlLabel control={<Switch checked={checked} onChange={toggleChecked} />} label="Play Local" />
+              <PlayBox />
             </Paper>
           </Grid>
         </Grid>

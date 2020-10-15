@@ -27,7 +27,7 @@ export default function MessageBox(props) {
     useEffect(() => {
       divRef.current.scrollIntoView({ behavior: 'smooth' });
     });
-    let thisWindowSize = props.windowsize - 150;
+    let thisWindowSize = props.windowsize - 135;
 
     function generateList(props) {
         let mapCounter = 0;

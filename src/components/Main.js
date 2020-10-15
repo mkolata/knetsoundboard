@@ -5,7 +5,6 @@ import Container from '@material-ui/core/Container';
 import WindowSoundboard from './WindowSoundboard';
 import WindowHotkeys from './WindowHotkeys';
 import { ThemeProvider } from '@material-ui/styles';
-
 import ThemeLight from './ThemeLight'
 //import ThemeDark from './ThemeDark'
 import MenuBar from './MenuBar'
@@ -37,7 +36,7 @@ export default function Main() {
   const [page, setPage] = useState('Soundboard');
   const [drawer, setDrawer] = useState(false);
   const [width, height] = useWindowSize();
-  
+
   return (
     <React.Fragment>
       <ThemeProvider theme={ThemeLight}>
