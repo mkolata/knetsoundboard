@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Typography from '@material-ui/core/Typography';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
@@ -11,49 +11,38 @@ import ThemeLight from './ThemeLight'
 import MenuBar from './MenuBar'
 import DrawerBar from './DrawerBar'
 
-export default class Main extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      page: 'Soundboard',
-      pagecontent: <WindowSoundboard />,
-      drawer: false,
-    };
+function menuSelector(page) {
+  switch (page) {
+    case 'Hotkeys':
+      return <WindowHotkeys />
+    default:
+      return <WindowSoundboard />
   }
+}
 
-  handleMenuToggleClick = () => { this.setState({ drawer: !this.state.drawer }) };
+export default function Main() {
+  const [page, setPage] = useState('Soundboard');
+  const [drawer, setDrawer] = useState(false);
+  //const [size, setSize] = useState([0, 0]);
 
-  handleMenuClick = name => () => { this.setState({ page: 'name' }) };
-
-  menuSelector() {
-    switch (this.state.page) {
-      case 'Hotkeys':
-        return <WindowHotkeys />
-      default:
-        return <WindowSoundboard />
-    }
-  }
-
-  render() {
-    return (
-      <React.Fragment>
-        <ThemeProvider theme={ThemeLight}>
-          <CssBaseline />
-          <div>
-            <div className="MenuBar">
-              <MenuBar page={this.state.page} onClick={() => this.handleMenuToggleClick()} />
-            </div>
-            <Container maxWidth="100%" disableGutters="true">
-              <Typography component="div" style={{ height: window.innerHeight - 48 }}>
-                {this.menuSelector()}
-              </Typography>
-            </Container>
+  return (
+    <React.Fragment>
+      <ThemeProvider theme={ThemeLight}>
+        <CssBaseline />
+        <div>
+          <div className="MenuBar">
+            <MenuBar page={page} onClick={() => setDrawer(!drawer)} />
           </div>
-          <div className="DrawerBar">
-            <DrawerBar drawer={this.state.drawer} onClick={() => this.handleMenuToggleClick()} handleMenuClick={(name) => { this.setState({ page: name }) }} />
-          </div>
-        </ThemeProvider>
-      </React.Fragment>
-    );
-  }
+          <Container maxWidth="100%" disableGutters="true">
+            <Typography component="div" style={{ height: window.innerHeight - 48 }}>
+              {menuSelector(page)}
+            </Typography>
+          </Container>
+        </div>
+        <div className="DrawerBar">
+          <DrawerBar drawer={drawer} onClick={() => setDrawer(!drawer)} handleMenuClick={(name) => { setPage(name) }} />
+        </div>
+      </ThemeProvider>
+    </React.Fragment>
+  );
 }
