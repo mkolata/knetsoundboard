@@ -37,7 +37,7 @@ export default function Main() {
   const [page, setPage] = useState('Soundboard');
   const [drawer, setDrawer] = useState(false);
   const [width, height] = useWindowSize();
-
+  
   return (
     <React.Fragment>
       <ThemeProvider theme={ThemeLight}>

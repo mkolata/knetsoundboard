@@ -8,6 +8,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import TextField from '@material-ui/core/TextField';
 import SoundList from './SoundList'
+import MessageBox from './MessageBox'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,7 +22,10 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
     textAlign: 'left',
-  }
+  },
+  messagefield: {
+    marginTop: 9,
+  },
 }));
 
 export default function WindowSoundboard(props) {
@@ -29,16 +33,18 @@ export default function WindowSoundboard(props) {
   const toggleChecked = () => { setChecked((prev) => !prev); };
   const classes = useStyles();
 
-  let windowsize = window.innerHeight - 48 - 62 - 48 + "px";
-
+  let windowsize = window.innerHeight - 48 - 62 - 48;
   return (
-    <div id="penis" className={classes.root}>
+    <div className={classes.root}>
       <Grid container alignItems="flex-start" spacing={2}>
         <Grid item sm={7}>
           <Grid item >
             <Paper className={classes.paper}>
-              Bla. Blablaba bla! <br></br> Bla? Bla! BLABLA! bla
-                </Paper>
+              <MessageBox windowsize={windowsize}/>
+              <form noValidate autoComplete="off">
+                <TextField className={classes.messagefield} id="search" label="Message" fullWidth="true" variant="outlined" size="small"/>
+              </form>
+            </Paper>
           </Grid><br></br>
           <Grid item >
             <Paper className={classes.paper}>
@@ -53,7 +59,7 @@ export default function WindowSoundboard(props) {
                 <TextField id="search" label="Search" fullWidth="true" />
               </form>
             </FormGroup>
-            <Box color="primary" display='flex' flex='1' justifyContent='space-around' overflow="auto" style={{ height: windowsize }}><SoundList /></Box>
+            <Box color="primary" display='flex' flex='1' justifyContent='space-around' overflow="auto" style={{ height: windowsize}}><SoundList /></Box>
           </Paper>
         </Grid>
       </Grid>
