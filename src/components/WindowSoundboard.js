@@ -26,6 +26,12 @@ const useStyles = makeStyles((theme) => ({
   messagefield: {
     marginTop: 9,
   },
+  search: {
+    marginTop: -6,
+  },
+  soundlist: {
+    marginTop: 4,
+  },
 }));
 
 export default function WindowSoundboard(props) {
@@ -56,10 +62,10 @@ export default function WindowSoundboard(props) {
           <Paper className={classes.paper}>
             <FormGroup className={classes.form}>
               <form noValidate autoComplete="off">
-                <TextField id="search" label="Search" fullWidth="true" />
+                <TextField className={classes.search} id="search" label="Search" fullWidth="true" />
               </form>
             </FormGroup>
-            <Box color="primary" display='flex' flex='1' justifyContent='space-around' overflow="auto" style={{ height: windowsize}}><SoundList /></Box>
+            <Box className={classes.soundlist} color="primary" display='flex' flex='1' justifyContent='space-around' overflow="auto" style={{ height: windowsize}}><SoundList /></Box>
           </Paper>
         </Grid>
       </Grid>
