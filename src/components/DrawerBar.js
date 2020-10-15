@@ -17,33 +17,34 @@ import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 
 const useStyles = makeStyles({
     list: {
-      width: 250,
+        width: 250,
     },
     fullList: {
-      width: 'auto',
+        width: 'auto',
     },
-  });
+});
 
-  export default function DrawerBar(props) {
+const menuitems = {
+    1: ['Soundboard', <HomeIcon />],
+    2: ['Hotkeys', <KeyboardIcon />],
+    3: ['Upload', <PublishIcon />],
+    4: ['Settings', <SettingsIcon />],
+}
+
+export default function DrawerBar(props) {
     const classes = useStyles();
     const toggleDrawer = (open) => (event) => { props.onClick(open); };
-    let menuitems = {
-        1: ['Soundboard',<HomeIcon />],
-        2: ['Hotkeys',<KeyboardIcon />],
-        3: ['Upload',<PublishIcon />],
-        4: ['Settings',<SettingsIcon />],
-     }
 
     return (
         <div>
             <Drawer open={props.drawer} onClose={toggleDrawer(false)}>
                 <div className={clsx(classes.list)} role="presentation" onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
                     <List>
-                    {Object.keys(menuitems).map((text, index) => (
-                        <ListItem button key={menuitems[text][0]} onClick={() => props.handleMenuClick(menuitems[text][0])}>
-                            <ListItemIcon>{menuitems[text][1]}</ListItemIcon>
-                            <ListItemText primary={menuitems[text][0]} />
-                        </ListItem>
+                        {Object.keys(menuitems).map((text, index) => (
+                            <ListItem button key={menuitems[text][0]} onClick={() => props.handleMenuClick(menuitems[text][0])}>
+                                <ListItemIcon>{menuitems[text][1]}</ListItemIcon>
+                                <ListItemText primary={menuitems[text][0]} />
+                            </ListItem>
                         ))}
                     </List>
                     <Divider />
@@ -60,5 +61,5 @@ const useStyles = makeStyles({
                 </div>
             </Drawer>
         </div>
-      );
-  }
+    );
+}

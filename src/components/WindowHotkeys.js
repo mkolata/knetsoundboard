@@ -1,9 +1,8 @@
 import React from 'react';
 
-
 export default class WindowHotkeys extends React.Component {
     render() {
-        return(
+        return (
             <div>hot</div>
         )
     }

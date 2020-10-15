@@ -7,7 +7,7 @@ import WindowHotkeys from './WindowHotkeys';
 import { ThemeProvider } from '@material-ui/styles';
 
 import ThemeLight from './ThemeLight'
-import ThemeDark from './ThemeDark'
+//import ThemeDark from './ThemeDark'
 import MenuBar from './MenuBar'
 import DrawerBar from './DrawerBar'
 
@@ -16,65 +16,43 @@ export default class Main extends React.Component {
     super(props);
     this.state = {
       page: 'Soundboard',
-      pagecontent: <WindowSoundboard/>,
+      pagecontent: <WindowSoundboard />,
       drawer: false,
-      height: window.innerHeight,
-      width: window.innerWidth,
     };
-    this.updateDimensions = this.updateDimensions.bind(this);
   }
 
-  handleMenuToggleClick() {
-    this.setState({drawer: !this.state.drawer})
-  }
+  handleMenuToggleClick = () => { this.setState({ drawer: !this.state.drawer }) };
 
-  handleMenuClick = name => () => {
-    this.setState({page: 'name'})
-  };
-
-  componentDidMount() {
-    window.addEventListener("resize", this.updateDimensions);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.updateDimensions);
-  }
-
-  updateDimensions() {
-    this.setState({
-      height: window.innerHeight, 
-      width: window.innerWidth
-    });
-  }
+  handleMenuClick = name => () => { this.setState({ page: 'name' }) };
 
   menuSelector() {
-    switch(this.state.page) {
+    switch (this.state.page) {
       case 'Hotkeys':
-        return <WindowHotkeys/>
+        return <WindowHotkeys />
       default:
-        return <WindowSoundboard/>
+        return <WindowSoundboard />
     }
   }
 
   render() {
-    return(
+    return (
       <React.Fragment>
         <ThemeProvider theme={ThemeLight}>
-        <CssBaseline />
+          <CssBaseline />
           <div>
             <div className="MenuBar">
-              <MenuBar page={this.state.page} onClick={(role) => this.handleMenuToggleClick(role)}/>
+              <MenuBar page={this.state.page} onClick={() => this.handleMenuToggleClick()} />
             </div>
-            <Container id="blub" maxWidth="100%" disableGutters="true">
-              <Typography component="div" style={{ height: window.innerHeight-48}}>
+            <Container maxWidth="100%" disableGutters="true">
+              <Typography component="div" style={{ height: window.innerHeight - 48 }}>
                 {this.menuSelector()}
               </Typography>
             </Container>
           </div>
-          <div className="DrawerBar"> 
-            <DrawerBar drawer={this.state.drawer} onClick={() => this.handleMenuToggleClick()} handleMenuClick={(name) => {this.setState({page: name})}}/>
+          <div className="DrawerBar">
+            <DrawerBar drawer={this.state.drawer} onClick={() => this.handleMenuToggleClick()} handleMenuClick={(name) => { this.setState({ page: name }) }} />
           </div>
-          </ThemeProvider>
+        </ThemeProvider>
       </React.Fragment>
     );
   }
