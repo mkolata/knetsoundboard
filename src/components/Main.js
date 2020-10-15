@@ -5,7 +5,6 @@ import Container from '@material-ui/core/Container';
 import WindowSoundboard from './WindowSoundboard';
 import WindowHotkeys from './WindowHotkeys';
 import { ThemeProvider } from '@material-ui/styles';
-import debounce from 'lodash.debounce';
 
 import ThemeLight from './ThemeLight'
 //import ThemeDark from './ThemeDark'
