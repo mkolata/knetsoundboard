@@ -35,18 +35,18 @@ export default function WindowSoundboard(props) {
     <div id="penis" className={classes.root}>
       <Grid container alignItems="flex-start" spacing={2}>
         <Grid item sm={7}>
-          <Grid item sm={12}>
+          <Grid item >
             <Paper className={classes.paper}>
               Bla. Blablaba bla! <br></br> Bla? Bla! BLABLA! bla
                 </Paper>
           </Grid><br></br>
-          <Grid item sm={12}>
+          <Grid item >
             <Paper className={classes.paper}>
               <FormControlLabel control={<Switch checked={checked} onChange={toggleChecked} />} label="Play Local" />
             </Paper>
           </Grid>
         </Grid>
-        <Grid item sm>
+        <Grid item sm={5}>
           <Paper className={classes.paper}>
             <FormGroup className={classes.form}>
               <form noValidate autoComplete="off">
