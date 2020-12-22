@@ -29,7 +29,6 @@ export default function MessageBox(props) {
     });
 
     function generateList(props) {
-        let mapCounter = 0;
         let list = ["Hallo", "Test123", "Moin", "Hallo", "Test123", "Moin", "Hallo", "Test123", "Moin", "Hallo"].map((item) => (
             <ListItem className={classes.listitem}>
                 <ListItemText secondary={item} primary={<Typography style={{ fontSize: 10 }}>User</Typography>} />

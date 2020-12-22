@@ -1,5 +1,4 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import Grid from '@material-ui/core/Grid';
@@ -8,16 +7,7 @@ import VolumeDown from '@material-ui/icons/VolumeDown';
 import VolumeUp from '@material-ui/icons/VolumeUp';
 import Slider from '@material-ui/core/Slider';
 
-const useStyles = makeStyles({
-    root: {
-    },
-    box: {
-        textAlign: 'left',
-    },
-});
-
 export default function WindowSoundboard(props) {
-    const classes = useStyles();
     const [plButton, setPlButton] = React.useState(false);
     const [mButton, setMButton] = React.useState(false);
     const togglePlButton = () => { setPlButton((prev) => !prev); };

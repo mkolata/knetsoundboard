@@ -3,9 +3,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-//import Divider from '@material-ui/core/Divider';
-import { Typography } from '@material-ui/core';
-import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -25,7 +22,6 @@ export default function MessageBox(props) {
     const classes = useStyles();
 
     function generateList(props) {
-        let mapCounter = 0;
         let list = ["Test1-PC", "Test2-PC"].map((item) => (
             <ListItem className={classes.listitem}>
                 <ListItemText primary={item} />
