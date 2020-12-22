@@ -27,7 +27,6 @@ export default function MessageBox(props) {
     useEffect(() => {
       divRef.current.scrollIntoView({ behavior: 'smooth' });
     });
-    let thisWindowSize = props.windowsize - 135;
 
     function generateList(props) {
         let mapCounter = 0;
@@ -39,7 +38,7 @@ export default function MessageBox(props) {
         return list;
     }
     return (
-        <Box height={thisWindowSize} overflow="auto">
+        <Box overflow="auto">
             <List className={classes.list} dense={true} disablePadding={true}>
                 {generateList()}
                 <div id="test" ref={divRef} />

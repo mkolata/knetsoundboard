@@ -24,9 +24,9 @@ function useWindowSize() {
   useLayoutEffect(() => {
     function updateSize() {
       setSize([window.innerWidth, window.innerHeight]); 
-    }
-    window.addEventListener('resize', updateSize);
-    updateSize();
+    } //DISABLE THIS FOR NOW
+    //window.addEventListener('resize', updateSize);
+    //updateSize(); 
     return () => window.removeEventListener('resize', updateSize);
   }, []);
   return size;

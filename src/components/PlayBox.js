@@ -10,7 +10,6 @@ import Slider from '@material-ui/core/Slider';
 
 const useStyles = makeStyles({
     root: {
-        width: 200,
     },
     box: {
         textAlign: 'left',
@@ -29,29 +28,26 @@ export default function WindowSoundboard(props) {
     };
 
     return (
-        <Grid container alignItems="flex-start" spacing={6}>
-            <Grid item xs={7}>
-                <br/>
-            <Grid container spacing={2}>
-        <Grid item>
-          <VolumeDown />
-        </Grid>
-        <Grid item xs>
-          <Slider value={value} onChange={handleChange} aria-labelledby="continuous-slider" />
-        </Grid>
-        <Grid item>
-          <VolumeUp />
-        </Grid>
-      </Grid>
-
-            </Grid>
-            <Grid item xs={5}>
-                <Box className={classes.box}>
-                    <FormControlLabel control={<Switch checked={plButton} onChange={togglePlButton} />} label="Play Local" /> <br />
-                    <FormControlLabel control={<Switch checked={mButton} onChange={toggleMButton} />} label="Mute" />
-                </Box>
-            </Grid>
-
-        </Grid>
+	    <Grid container spacing={1}>
+			<Grid item xs={12} xm={6}>
+				<Grid container spacing={2}>
+					<Grid item xs={1}>
+					  <VolumeDown />
+					</Grid>
+					<Grid item xs={10}>
+					  <Slider value={value} onChange={handleChange} aria-labelledby="continuous-slider" />
+					</Grid>
+					<Grid item xs={1}>
+					  <VolumeUp />
+					</Grid>
+				  </Grid>
+				</Grid>
+			<Grid item xs={12} xm={6}>
+				<Box>
+					<FormControlLabel control={<Switch checked={plButton} onChange={togglePlButton} />} label="Play Local" />
+					<FormControlLabel control={<Switch checked={mButton} onChange={toggleMButton} />} label="Mute" />
+				</Box>
+			</Grid>
+		</Grid>
     );
 }
