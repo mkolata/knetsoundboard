@@ -1,12 +1,16 @@
 import React from 'react';
 import { useState } from 'react';
 import AppBar from './AppBar'
-export default function Main() {
+import Drawer from './Drawer'
 
-return(
-  <div>
-    <AppBar />
-  </div>
-);
+export default function Main() {
+  const [drawer, setDrawer] = useState(false);
+
+  return(
+    <div>
+      <AppBar onClick={() => setDrawer(!drawer)}/>
+      <Drawer drawer={drawer} onClick={() => setDrawer(!drawer)} />
+    </div>
+  );
 
 }
