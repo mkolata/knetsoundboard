@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" className={classes.title}>
-              MainPageText
+              {props.page}
             </Typography>
           </Toolbar>
         </AppBar>
