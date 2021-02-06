@@ -9,6 +9,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
 import FileValidation from './file-validation';
+import fileValidation from './file-validation';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -38,6 +39,7 @@ export default function PageUpload() {
       };
 
     function upload(currentFile) {
+        console.log(fileValidation.validate(currentFile));
         setUploadProgress(0);
         UploadService.upload(currentFile, (event) => setUploadProgress(Math.round((100 * event.loaded) / event.total)))
             .then((response) => { setUploadMessage(response.data.message); setBackdrop(false) }) //response.status
