@@ -42,13 +42,18 @@ export default function PageUpload() {
         const musicMetadata = require('music-metadata-browser');
         musicMetadata.parseBlob(currentFile).then(metadata => {
             console.log(metadata.format.duration);
-            setBackdrop(true);
-            setUploadProgress(0);
-            UploadService.upload(currentFile, (event) => setUploadProgress(Math.round((100 * event.loaded) / event.total)))
-                .then((response) => { setUploadMessage(response.data.message); setBackdrop(false) }) //response.status
-                .catch((error) => { setUploadMessage(error.message); setUploadProgress(-1); setBackdrop(false); setOpen(true) })
+            if (metadata.format.duration > 0 && metadata.format.duration < 90) {
+                setBackdrop(true);
+                setUploadProgress(0);
+                UploadService.upload(currentFile, (event) => setUploadProgress(Math.round((100 * event.loaded) / event.total)))
+                    .then((response) => { setUploadMessage(response.data.message); setBackdrop(false) }) //response.status
+                    .catch((error) => { setUploadMessage(error.message); setUploadProgress(-1); setBackdrop(false); setOpen(true) })
+            } else {
+                setOpen(true);
+            }
         });
     }
+
     //reset e on fail?
     return (
         <div className={classes.root}>
