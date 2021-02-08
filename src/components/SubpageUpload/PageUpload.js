@@ -8,8 +8,6 @@ import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
-import FileValidation from './file-validation';
-import fileValidation from './file-validation';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -33,13 +31,22 @@ export default function PageUpload() {
 
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
-          return;
+            return;
         }
         setOpen(false);
-      };
+    };
 
-    function upload(currentFile) {
-        console.log(fileValidation.validate(currentFile));
+    function validateFile(file) {
+
+
+        return("test");
+    }
+
+    let upload = (e) => {
+        const currentFile = e.target.files[0];
+        setBackdrop(true);
+        console.log(validateFile);
+        //console.log(fileValidation.validate(currentFile)); //fix here
         setUploadProgress(0);
         UploadService.upload(currentFile, (event) => setUploadProgress(Math.round((100 * event.loaded) / event.total)))
             .then((response) => { setUploadMessage(response.data.message); setBackdrop(false) }) //response.status
@@ -51,18 +58,18 @@ export default function PageUpload() {
             <div>
                 <Box textAlign='center'>
                     <br /><br />
-                    <input accept="audio/mp3" className={classes.input} id="contained-button-file" type="file" onChange={(e) => upload(e.target.files[0] && setBackdrop(true))} />
+                    <input accept="audio/mp3" className={classes.input} id="contained-button-file" type="file" onChange={upload} />
                     <label htmlFor="contained-button-file">
                         <Button variant="contained" color="primary" component="span">Upload File</Button>
                     </label>
                 </Box>
             </div>
             <Backdrop className={classes.backdrop} open={backdrop}>
-                    <CircularProgress color="inherit" />
+                <CircularProgress color="inherit" />
             </Backdrop>
             <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="error">
-                        This is a ALLAHUAKBAR message!
+                    This is a ALLAHUAKBAR message!
                 </Alert>
             </Snackbar>
         </div>
