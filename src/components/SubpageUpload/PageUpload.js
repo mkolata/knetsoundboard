@@ -8,6 +8,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
+import * as musicMetadata from 'music-metadata-browser';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -36,21 +37,17 @@ export default function PageUpload() {
         setOpen(false);
     };
 
-    function validateFile(file) {
-
-
-        return("test");
-    }
-
     let upload = (e) => {
         const currentFile = e.target.files[0];
-        setBackdrop(true);
-        console.log(validateFile);
-        //console.log(fileValidation.validate(currentFile)); //fix here
-        setUploadProgress(0);
-        UploadService.upload(currentFile, (event) => setUploadProgress(Math.round((100 * event.loaded) / event.total)))
-            .then((response) => { setUploadMessage(response.data.message); setBackdrop(false) }) //response.status
-            .catch((error) => { setUploadMessage(error.message); setUploadProgress(-1); setBackdrop(false); setOpen(true) })
+        const musicMetadata = require('music-metadata-browser');
+        musicMetadata.parseBlob(currentFile).then(metadata => {
+            console.log(metadata.format.duration);
+            setBackdrop(true);
+            setUploadProgress(0);
+            UploadService.upload(currentFile, (event) => setUploadProgress(Math.round((100 * event.loaded) / event.total)))
+                .then((response) => { setUploadMessage(response.data.message); setBackdrop(false) }) //response.status
+                .catch((error) => { setUploadMessage(error.message); setUploadProgress(-1); setBackdrop(false); setOpen(true) })
+        });
     }
     //reset e on fail?
     return (
