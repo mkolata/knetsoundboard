@@ -47,10 +47,14 @@ export default function PageUpload() {
                 setUploadProgress(0);
                 UploadService.upload(currentFile, (event) => setUploadProgress(Math.round((100 * event.loaded) / event.total)))
                     .then((response) => { setUploadMessage(response.data.message); setBackdrop(false) }) //response.status
-                    .catch((error) => { setUploadMessage(error.message); setUploadProgress(-1); setBackdrop(false); setOpen(true) })
+                    .catch((error) => { setUploadMessage("Error: " + error.message); setUploadProgress(-1); setBackdrop(false); setOpen(true) })
             } else {
+                setUploadMessage("Error: Audio file too long!");
                 setOpen(true);
             }
+        }).catch(e => {
+            setUploadMessage("Error: Unsupported file format!");
+            setOpen(true);
         });
     }
 
@@ -71,7 +75,7 @@ export default function PageUpload() {
             </Backdrop>
             <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="error">
-                    This is a ALLAHUAKBAR message!
+                    Error: {uploadMessage}
                 </Alert>
             </Snackbar>
         </div>
