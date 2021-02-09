@@ -41,7 +41,8 @@ export default function PageUpload() {
         const currentFile = e.target.files[0];
         const musicMetadata = require('music-metadata-browser');
         musicMetadata.parseBlob(currentFile).then(metadata => {
-            if (metadata.format.container === 'mpeg') {
+            console.log(metadata.format.container);
+            if (metadata.format.container === 'MPEG') {
                 if (metadata.format.duration > 0 && metadata.format.duration < 90) {
                     setBackdrop(true);
                     setUploadProgress(0);
