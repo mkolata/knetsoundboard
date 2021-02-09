@@ -41,19 +41,23 @@ export default function PageUpload() {
         const currentFile = e.target.files[0];
         const musicMetadata = require('music-metadata-browser');
         musicMetadata.parseBlob(currentFile).then(metadata => {
-            console.log(metadata.format.duration);
-            if (metadata.format.duration > 0 && metadata.format.duration < 90) {
-                setBackdrop(true);
-                setUploadProgress(0);
-                UploadService.upload(currentFile, (event) => setUploadProgress(Math.round((100 * event.loaded) / event.total)))
-                    .then((response) => { setUploadMessage(response.data.message); setBackdrop(false) }) //response.status
-                    .catch((error) => { setUploadMessage(error.message); setUploadProgress(-1); setBackdrop(false); setOpen(true) })
+            if (metadata.format.container === 'mpeg') {
+                if (metadata.format.duration > 0 && metadata.format.duration < 90) {
+                    setBackdrop(true);
+                    setUploadProgress(0);
+                    UploadService.upload(currentFile, (event) => setUploadProgress(Math.round((100 * event.loaded) / event.total)))
+                        .then((response) => { setUploadMessage(response.data.message); setBackdrop(false) }) //response.status
+                        .catch((error) => { setUploadMessage(error.message); setUploadProgress(-1); setBackdrop(false); setOpen(true) })
+                } else {
+                    setUploadMessage("Audio file too long!");
+                    setOpen(true);
+                }
             } else {
-                setUploadMessage("Audio file too long!");
+                setUploadMessage("Only mp3 files allowed!");
                 setOpen(true);
             }
         }).catch(e => {
-            setUploadMessage("Unsupported file format!");
+            setUploadMessage("Only mp3 files allowed!");
             setOpen(true);
         });
     }
