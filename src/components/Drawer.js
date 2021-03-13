@@ -35,7 +35,7 @@ export default function DrawerBar(props) {
                 <div className={clsx(classes.list)} role="presentation" onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
                     <List>
                         {Object.keys(menuitems).map((text, index) => (
-                            <ListItem button key={menuitems[text][0]} onClick={() => props.handleMenuClick(menuitems[text][0])}>
+                            <ListItem button data-testid={menuitems[text][0] + '-menu-button'} key={menuitems[text][0]} onClick={() => props.handleMenuClick(menuitems[text][0])}>
                                 <ListItemIcon>{menuitems[text][1]}</ListItemIcon>
                                 <ListItemText primary={menuitems[text][0]} />
                             </ListItem>

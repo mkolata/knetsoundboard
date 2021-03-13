@@ -25,10 +25,10 @@ const useStyles = makeStyles((theme) => ({
       <div className={classes.root}>
         <AppBar position="static">
           <Toolbar>
-            <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={props.onClick}>
+            <IconButton data-testid="burger-menu-button" edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={props.onClick}>
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" className={classes.title}>
+            <Typography data-testid="page-name" variant="h6" className={classes.title}>
               {props.page}
             </Typography>
           </Toolbar>

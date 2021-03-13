@@ -69,9 +69,9 @@ export default function PageUpload() {
             <div>
                 <Box textAlign='center'>
                     <br /><br />
-                    <input accept="audio/mp3" className={classes.input} id="contained-button-file" type="file" onChange={upload} />
+                    <input data-testid="upload-input" accept="audio/mp3" className={classes.input} id="contained-button-file" type="file" onChange={upload} />
                     <label htmlFor="contained-button-file">
-                        <Button variant="contained" color="primary" component="span">Upload File</Button>
+                        <Button data-testid="upload-button" variant="contained" color="primary" component="span">Upload File</Button>
                     </label>
                 </Box>
             </div>
@@ -79,7 +79,7 @@ export default function PageUpload() {
                 <CircularProgress color="inherit" />
             </Backdrop>
             <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                <Alert onClose={handleClose} severity="error">
+                <Alert data-testid="upload-msg" onClose={handleClose} severity="error">
                     Error: {uploadMessage}
                 </Alert>
             </Snackbar>
