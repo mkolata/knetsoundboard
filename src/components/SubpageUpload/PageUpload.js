@@ -8,7 +8,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Snackbar from '@material-ui/core/Snackbar';
 import Alert from '@material-ui/lab/Alert';
-import * as musicMetadata from 'music-metadata-browser';
+//import * as musicMetadata from 'music-metadata-browser';
 
 const useStyles = makeStyles((theme) => ({
     root: {

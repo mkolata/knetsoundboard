@@ -1,8 +1,6 @@
 import React from 'react';
 import { render, cleanup, fireEvent, act, screen, waitFor } from '@testing-library/react';
-import userEvent from '@testing-library/user-event'
 import PageUpload from '../components/SubpageUpload/PageUpload.js'
-import raw from './mp3_over_90s_test.mp3';
 
 let container;
 //jest
