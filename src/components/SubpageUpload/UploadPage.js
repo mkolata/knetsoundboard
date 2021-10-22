@@ -29,9 +29,6 @@ export default function UploadPage() {
     const [snackbar, showSnackbar] = React.useState(false);
 
     const handleClose = (event, reason) => {
-        if (reason === 'clickaway') {
-            return;
-        }
         showSnackbar(false);
     };
 
