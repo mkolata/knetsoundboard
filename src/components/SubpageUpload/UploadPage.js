@@ -36,12 +36,12 @@ export default function UploadPage() {
     };
 
     const upload = (e) => {
-        showBackdrop(true);
         const currentFile = e.target.files[0];
         
         musicMetadata.parseBlob(currentFile).then(metadata => {
             if (metadata.format.container === 'MPEG') {
                 if (metadata.format.duration > 0 && metadata.format.duration < 90) {
+                    showBackdrop(true);
                     UploadService.upload(currentFile)
                         .then((response) => { setErrorMessage(response.data.message); showBackdrop(false) }) 
                         .catch((error) => { setErrorMessage(error.message); showBackdrop(false); showSnackbar(true) })
