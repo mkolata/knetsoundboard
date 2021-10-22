@@ -2,19 +2,19 @@ import React from 'react';
 import { useState } from 'react';
 import AppBar from './AppBar';
 import Drawer from './Drawer';
-import PageHome from './SubpageHome/PageHome';
-import PageUpload from './SubpageUpload/PageUpload';
+import HomePage from './SubpageHome/HomePage';
+import UploadPage from './SubpageUpload/UploadPage';
 
 export default function Main() {
-  const [drawer, setDrawer] = useState(false);
-  const [page, setPage] = useState("Soundboard");
+  const [drawer, showDrawer] = useState(false);
+  const [pageName, setPageName] = useState("Soundboard");
 
-  function pageSelector() {
-    switch(page){
+  function pageContent() {
+    switch(pageName){
       case 'Soundboard':
-        return <PageHome/>;
+        return <HomePage/>;
       case 'Upload':
-        return <PageUpload/>;
+        return <UploadPage/>;
       default:
         return 'UI Error!';
     }
@@ -23,11 +23,11 @@ export default function Main() {
   return(
     <div>
       <div>
-      <AppBar page={page} onClick={() => setDrawer(!drawer)}/>
-      <Drawer drawer={drawer} onClick={() => setDrawer(!drawer)} handleMenuClick={(name) => { setPage(name) }}/>
+      <AppBar pageName={pageName} onAppBarButtonClick={() => showDrawer(!drawer)}/>
+      <Drawer drawer={drawer} onDrawerClick={() => showDrawer(!drawer)} handleMenuClick={(name) => { setPageName(name); showDrawer(!drawer); }}/>
       </div>
       <div>
-       {pageSelector()}
+       {pageContent()}
       </div>
     </div>
   );

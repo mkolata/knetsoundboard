@@ -12,7 +12,6 @@ import * as musicMetadata from 'music-metadata-browser';
 
 const useStyles = makeStyles((theme) => ({
     root: {
-
     },
     input: {
         display: 'none',
@@ -39,6 +38,7 @@ export default function UploadPage() {
     const upload = (e) => {
         showBackdrop(true);
         const currentFile = e.target.files[0];
+        
         musicMetadata.parseBlob(currentFile).then(metadata => {
             if (metadata.format.container === 'MPEG') {
                 if (metadata.format.duration > 0 && metadata.format.duration < 90) {
@@ -54,7 +54,7 @@ export default function UploadPage() {
                 showSnackbar(true);
             }
         }).catch(e => {
-            setErrorMessage("Only mp3 files allowed!");
+            setErrorMessage("Unknown parsing error");
             showSnackbar(true);
         });
     }
